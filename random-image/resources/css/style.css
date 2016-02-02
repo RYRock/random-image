@@ -1,0 +1,54 @@
+@media screen and (orientation: portrait) {
+    .outter {
+        width: 80%;
+        height: 0;
+        padding-bottom: 60%;
+        background-color: silver;
+        margin: auto;
+    }
+    .wrapper-1x1 {
+        width: 25%;
+        float: left;
+    }
+    .wrapper-1x1 .inner {
+        position: relative;
+        padding-bottom: 100%;
+        height: 0;
+    }
+    .element-to-stretch {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+
+/* For landscape, we want the tool bar stick on the left */
+
+@media screen and (orientation: landscape) {
+    .outter {
+        width: 70%;
+        height: 0;
+        padding-bottom: 52.5%;
+        background-color: silver;
+        margin: auto;
+    }
+    .wrapper-1x1 {
+        width: 25%;
+        float: left;
+    }
+    .wrapper-1x1 .inner {
+        position: relative;
+        padding-bottom: 100%;
+        height: 0;
+    }
+    .element-to-stretch {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
