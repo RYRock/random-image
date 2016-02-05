@@ -30,6 +30,20 @@ Array.prototype.shuffle = function() {
 //     return Math.floor(Math.random() * (max - min + 1)) + min;
 // }
 
+function AllowDrop(event) {
+    event.preventDefault();
+}
+
+function Drag(event) {
+    event.dataTransfer.setData("text", event.currentTarget.id);
+}
+
+function Drop(event) {
+    event.preventDefault();
+    var data = event.dataTransfer.getData("text");
+    event.currentTarget.appendChild(document.getElementById(data));
+}
+
 imgArray = imgArray.shuffle();
 index = index.shuffle();
 
@@ -48,24 +62,3 @@ interval = setInterval(function() {
         timer.innerHTML = 'Countdown Timer ' + counter.toString() + ' seconds.';
     }
 }, 1000);
-
-
-function dragStart(ev) {
-   ev.dataTransfer.effectAllowed='move';
-   ev.dataTransfer.setData("Text", ev.target.getAttribute('id'));
-   ev.dataTransfer.setDragImage(ev.target,100,100);
-   return true;
-}
-function dragEnter(ev) {
-   event.preventDefault();
-   return true;
-}
-function dragOver(ev) {
-     event.preventDefault();
-}
-function dragDrop(ev) {
-   var data = ev.dataTransfer.getData("Text");
-   ev.target.appendChild(document.getElementById(data));
-   ev.stopPropagation();
-   return false;
-}
