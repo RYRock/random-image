@@ -8,22 +8,24 @@ var imgArray = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', '7.jpg', '
 var index = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
 /* add prototype shuffle to Array */
-Array.prototype.shuffle = function() {
-    var i = this.length,
-        j,
-        temp;
+if (typeof Array.prototype.shuffle !== 'function') {
+    Array.prototype.shuffle = function() {
+        var i = this.length,
+            j,
+            temp;
 
-    if (i === 0) {
+        if (i === 0) {
+            return this;
+        }
+        while (--i) {
+            j = Math.floor(Math.random() * (i + 1));
+            temp = this[i];
+            this[i] = this[j];
+            this[j] = temp;
+        }
         return this;
-    }
-    while (--i) {
-        j = Math.floor(Math.random() * (i + 1));
-        temp = this[i];
-        this[i] = this[j];
-        this[j] = temp;
-    }
-    return this;
-};
+    };
+}
 
 /* return a num between max and min ex: 0 - 10 */
 // function getRandomInt(max, min) {
