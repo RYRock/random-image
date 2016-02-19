@@ -32,18 +32,25 @@ if (typeof Array.prototype.shuffle !== 'function') {
 //     return Math.floor(Math.random() * (max - min + 1)) + min;
 // }
 
-function AllowDrop(event) {
+function allowDrop(event) {
     event.preventDefault();
 }
 
-function Drag(event) {
-    event.dataTransfer.setData("text", event.currentTarget.id);
+function onDrag(event) {
+    event.dataTransfer.setData("image/jpg", event.currentTarget.id);
 }
 
-function Drop(event) {
+function onDrop(event) {
     event.preventDefault();
-    var data = event.dataTransfer.getData("text");
+    var data = event.dataTransfer.getData("image/jpg", event.currentTarget.id);
     event.currentTarget.appendChild(document.getElementById(data));
+}
+
+/* if img load failed reload after 1 sec */
+function loadError(image) {
+    setTimeout(function() {
+        image.src += '?' + +new Date;
+    }, 1000);
 }
 
 imgArray = imgArray.shuffle();
