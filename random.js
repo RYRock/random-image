@@ -1,6 +1,6 @@
 /* TO DO Drag And Drop */
 
-var timer = document.getElementById('timer'),
+var timer = document.querySelector('#timer'),
     counter = 120,
     interval;
 
@@ -43,13 +43,14 @@ function onDrag(event) {
 function onDrop(event) {
     event.preventDefault();
     var data = event.dataTransfer.getData("image/jpg", event.currentTarget.id);
-    event.currentTarget.appendChild(document.getElementById(data));
+    event.currentTarget.appendChild(document.querySelector('#' + data));
 }
 
 /* if img load failed reload after 1 sec */
 function loadError(image) {
     setTimeout(function() {
-        image.src += '?' + +new Date;
+        // image.src += '?' + +new Date;
+        image.src = image.src + '?' + +new Date;
     }, 1000);
 }
 
@@ -65,7 +66,7 @@ interval = setInterval(function() {
         if ((counter % 10) === 0) {
             var num = index[0];
 
-            document.getElementById('img' + num).src = 'resources/images/' + imgArray[num - 1];
+            document.querySelector('#img' + num).src = 'resources/images/' + imgArray[num - 1];
             index.splice(0, 1);
         }
         timer.innerHTML = 'Countdown Timer ' + counter.toString() + ' seconds.';
